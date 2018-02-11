@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 
 # just keep going if we don't have anything to install
 set +e

@@ -30,26 +30,23 @@ RUN set -ex ;\
         ; \
     apt-get clean -y ;\
     apt-get autoremove -y ;\
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
-
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ;\
     #####
     # Install Ruby
     #
-RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 ;\
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 ;\
     curl -sSL https://get.rvm.io | bash -s stable --ruby=$RUBY_VERSION ;\
     apt-get clean -y ;\
     apt-get autoremove -y ;\
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN echo "source /usr/local/rvm/scripts/rvm" >> $(getent passwd $(whoami) | cut -d: -f6)/.bashrc ;\
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ;\
+    echo "source /usr/local/rvm/scripts/rvm" >> $(getent passwd $(whoami) | cut -d: -f6)/.bashrc ;\
     source /usr/local/rvm/scripts/rvm ;\
     rvm default $RUBY_VERSION ;\
-    rvm use $RUBY_VERSION
-
+    rvm use $RUBY_VERSION ;\
     #####
     # Install Bundler
     #
-RUN gem install bundler --no-ri --no-rdoc ;\
+    gem install bundler --no-ri --no-rdoc ;\
     # forcebundle to use github https protocol
     bundle config github.https true ;\
     bundle config --global frozen 1 ;\

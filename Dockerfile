@@ -75,4 +75,4 @@ RUN set -ex ;\
 
 WORKDIR $WORKDIR_PATH
 
-ENTRYPOINT ["/usr/bin/init.sh"]
+RUN echo "Be sure to 'RUN init.sh' in the container using this one."

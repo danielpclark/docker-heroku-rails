@@ -2,6 +2,14 @@
 
 Docker container for Rails/VueJS based on the new Heroku-16 base image.
 
+Before building with this you'll need to make sure you have these yarn packages installed:
+
+```bash
+yarn add webpack
+yarn add babel-loader
+yarn add extract-text-webpack-plugin
+```
+
 ### Usage
 The root folder for your Rails project must have 
 

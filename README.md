@@ -1,22 +1,20 @@
 # Heroku Rails Docker Image
 
-Docker container for Rails based on the new Heroku-16 base image.
-
-### Tags available
-
-* `latest`,`2.3.4` *[(2.3.4/Dockerfile)](2.3.4/Dockerfile)*
-
-_We try to stay up-to-date with the new supported Heroku images. If you see any new one on [this page](https://devcenter.heroku.com/articles/ruby-support#supported-runtimes) feel free to open a PR!_
-
-_Also there are a couple of version numbers that we have to have in sync with Heroku. Check the [Dockerfile](Dockerfile.template) for those versions and the links where the Heroku version is kept. If you see any new version feel free to open a PR!_
-
-### Motivation
-The Heroku base images for ruby got [deprecated](https://github.com/heroku/docker-ruby) in favor of a more [build-your-own Dockerfile strategy](https://devcenter.heroku.com/articles/local-development-with-docker-compose). But I still feel that a base image for Rails serves its purposes. There is no point for each developer to replicate much of the instructions I've used here. The more automation the better amirite?
+Docker container for Rails/VueJS based on the new Heroku-16 base image.
 
 ### Usage
-The root folder for your Rails project must have a `Gemfile` and `Gemfile.lock` file. Then build a Dockerfile for your project with this image as base, and with other project-specific instructions (for example add some *post-run scripts*, see below):
+The root folder for your Rails project must have 
+
+* `Gemfile`
+* `Gemfile.lock`
+* `bin/`
+* `package.json`
+* `config/webpacker.yml`
+* `yarn.lock`
+
+files. Then build a Dockerfile for your project with this image as base, and with other project-specific instructions (for example add some *post-run scripts*, see below):
 ```docker
-FROM jfloff/docker-heroku-rails:latest
+FROM danielpclark/docker-heroku-rails:latest
 # example of post-run script
 RUN echo "rake db:seed" > $POST_RUN_SCRIPT_PATH/seed.sh
 ```

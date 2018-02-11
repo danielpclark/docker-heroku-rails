@@ -17,6 +17,10 @@ if [ -f $WORKDIR_PATH/Gemfile ]; then
   bundle check || bundle install --jobs 4
 fi
 
+if [ -f $WORKDIR_PATH/yarn.lock ]; then
+  yarn install
+fi
+
 if [ "$RAILS_ENV" == "production" ]; then
   bundle exec rake assets:precompile
 fi

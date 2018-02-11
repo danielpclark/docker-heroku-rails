@@ -7,7 +7,12 @@ LABEL Maintainer="Daniel P. Clark <6ftdan@gmail.com>" \
 SHELL ["/bin/bash", "-c", "-l"]
 
 ENV WORKDIR_PATH=/app/user \
-    RUBY_VERSION=2.5.0
+    RUBY_VERSION=2.5.0 \
+    RACK_ENV=production \
+    RAILS_ENV=production \
+    LANG=en_US.UTF-8 \
+    RAILS_LOG_TO_STDOUT=true \
+    RAILS_SERVE_STATIC_FILES=true
     
 ENV PATH=$WORKDIR_PATH/bin:$PATH \
     BUNDLE_APP_CONFIG=/app/heroku/ruby/.bundle/config \
@@ -63,7 +68,7 @@ RUN set -ex ;\
 ADD . $WORKDIR_PATH
 RUN set -ex ;\
     # Run bundler to cache dependencies if we have a Gemfile
-    if [ -f $WORKDIR_PATH/Gemfile ]; then bundle install --jobs 4; fi ;\
+    if [ -f $WORKDIR_PATH/Gemfile ]; then bundle install --without development test --jobs 4; fi ;\
     # Run yarn to cache dependencies if we have a yarn lock file
     if [ -f $WORKDIR_PATH/yarn.lock ]; then yarn install; fi
 

@@ -7,9 +7,8 @@ LABEL Maintainer="Daniel P. Clark <6ftdan@gmail.com>" \
 SHELL ["/bin/bash", "-c", "-l"]
 
 ENV WORKDIR_PATH=/app/user \
-    RUBY_VERSION=2.5.0 \
-    HOME=$(getent passwd $(whoami) | cut -d: -f6)
-
+    RUBY_VERSION=2.5.0
+    
 ENV PATH=$WORKDIR_PATH/bin \
     BUNDLE_APP_CONFIG=/app/heroku/ruby/.bundle/config \
     POST_RUN_SCRIPT_PATH=/app/.post-run.d
@@ -40,7 +39,7 @@ RUN set -ex ;\
     apt-get clean -y ;\
     apt-get autoremove -y ;\
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ;\
-    echo "source /usr/local/rvm/scripts/rvm" >> $HOME/.bashrc ;\
+    echo "source /usr/local/rvm/scripts/rvm" >> $(getent passwd $(whoami) | cut -d: -f6)/.bashrc ;\
     source /usr/local/rvm/scripts/rvm ;\
     rvm default $RUBY_VERSION ;\
     rvm use $RUBY_VERSION ;\

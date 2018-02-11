@@ -22,7 +22,7 @@ The root folder for your Rails project must have
 
 files. Then build a Dockerfile for your project with this image as base, and with other project-specific instructions (for example add some *post-run scripts*, see below):
 ```docker
-FROM danielpclark/docker-heroku-rails:latest
+FROM danielpclark/heroku-rails-vuejs:latest
 # example of post-run script
 RUN echo "rake db:seed" > $POST_RUN_SCRIPT_PATH/seed.sh
 ```

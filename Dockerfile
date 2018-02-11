@@ -12,7 +12,8 @@ ENV WORKDIR_PATH=/app/user \
     RAILS_ENV=production \
     LANG=en_US.UTF-8 \
     RAILS_LOG_TO_STDOUT=true \
-    RAILS_SERVE_STATIC_FILES=true
+    RAILS_SERVE_STATIC_FILES=true \
+    DATABASE_URL=postgresql:does_not_exist
     
 ENV PATH=$WORKDIR_PATH/bin:$PATH \
     BUNDLE_APP_CONFIG=/app/heroku/ruby/.bundle/config \

@@ -75,4 +75,9 @@ RUN set -ex ;\
 
 WORKDIR $WORKDIR_PATH
 
-RUN echo "Be sure to 'RUN init.sh' in the container using this one."
+RUN echo "Before your first Rails deploy:" &&\
+    echo "Be sure to add 'webpack', 'babel-loader', and 'extract-text-webpack-plugin' with yarn." && \
+    echo "Be sure to add 'RUN init.sh' in the container using this one." &&\
+    echo "Make sure you 'heroku stack:set container'." &&\
+    echo "And lastly you need to add any environment variables you want to use from Heroku" &&\
+    echo "in your CMD.  For example CMD POSTGRES_URL=\$POSTGRES_URL…"

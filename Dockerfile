@@ -1,4 +1,4 @@
-FROM heroku/heroku:16
+FROM phusion/baseimage:latest
 
 LABEL Maintainer="Daniel P. Clark <6ftdan@gmail.com>" \
       Version="1.0" \

@@ -1,4 +1,4 @@
-FROM phusion/baseimage:latest
+FROM phusion/baseimage:0.10.0
 
 LABEL Maintainer="Daniel P. Clark <6ftdan@gmail.com>" \
       Version="1.0" \
@@ -81,3 +81,5 @@ RUN echo "Before your first Rails deploy:" &&\
     echo "Make sure you 'heroku stack:set container'." &&\
     echo "And lastly you need to add any environment variables you want to use from Heroku" &&\
     echo "in your CMD.  For example CMD POSTGRES_URL=\$POSTGRES_URL…"
+
+ENTRYPOINT ["/sbin/my_init"]

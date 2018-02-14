@@ -1,4 +1,4 @@
-FROM heroku/heroku:16-build
+FROM heroku/heroku:16
 
 LABEL Maintainer="Daniel P. Clark <6ftdan@gmail.com>" \
       Version="1.0" \

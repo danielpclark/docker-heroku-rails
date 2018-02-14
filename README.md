@@ -8,7 +8,6 @@ The root folder for your Rails project must have
 
 * `Gemfile`
 * `Gemfile.lock`
-* `bin/`
 * `package.json`
 * `config/webpacker.yml`
 * `yarn.lock`
